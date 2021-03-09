@@ -46,7 +46,7 @@ export default class UserInterface extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
                     <div className="container">
-                        <Link className="navbar-brand" to="#">Hola, Residente</Link>
+                        <Link className="navbar-brand" to="#">Hola, Usuario</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon" />
                         </button>
