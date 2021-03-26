@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect,Link} from 'react-router-dom';
 
-export default class AdminInterface extends Component {
+export default class SuperUserHome extends Component {
     state = {
         rut: 0,
         cod_rol: "",
@@ -12,7 +12,7 @@ export default class AdminInterface extends Component {
 
     componentDidMount = async () => {
         if(this.state.verify !== null){
-            const res = await axios.get('/auth/adm/');
+            const res = await axios.get('/auth/sup/');
             this.setState({
                 verify: res.data.resul,
                 cod_rol: res.data.cod_rol,
@@ -46,7 +46,7 @@ export default class AdminInterface extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
                     <div className="container">
-                        <Link className="navbar-brand" to="#">Hola, Administrador</Link>
+                        <Link className="navbar-brand" to="#">Hola, Super Usuario</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon" />
                         </button>
@@ -78,7 +78,7 @@ export default class AdminInterface extends Component {
                         En construcción...
                     </p>
                 </div>
-            </div>  
+            </div>
         )
     };
 }

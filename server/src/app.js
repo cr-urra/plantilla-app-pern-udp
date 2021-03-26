@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-require('./database/associaton');
+require('./database/association');
 
 //inicialización
 
@@ -31,9 +31,9 @@ app.use((req,res,next) => {
 
 //Importar rutas
 
-import roles from './routes/roles.js';
-import users from './routes/users.js';
-import auth from './routes/auth.js';
+import roles from './routes/roles.routes.js';
+import users from './routes/users.routes.js';
+import auth from './routes/auth.routes.js';
 
 
 //routes

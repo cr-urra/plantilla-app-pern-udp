@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect, Link} from 'react-router-dom';
 
-export default class UserInterface extends Component {
+export default class UserHome extends Component {
     state = {
         rut: 0,
         cod_rol: "",

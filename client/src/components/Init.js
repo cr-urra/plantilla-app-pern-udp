@@ -6,10 +6,10 @@ export default class Init extends Component {
         return (
             <div className="altura-login">
                 <div className="text-center">
-                    <p className="title text-white">Proyecto</p>
+                    <p className="title text-black">Proyecto</p>
                 </div>
                 <Login/>
-                <div className="text-center m-3 text-white">
+                <div id="copyright" className="text-center m-3 text-black">
                     <h5>© Copyright 2021 | Todos los derechos reservados al desarrollo de este proyecto</h5>
                 </div>
             </div>

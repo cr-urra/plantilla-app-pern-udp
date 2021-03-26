@@ -11,6 +11,14 @@ export default class Login extends Component {
         resultado: true
     }
 
+    componentDidMount = async () => {
+        const res = await axios.get("/getRol");
+        res.data.resultado &&  this.setState({
+            cod_rol: res.data.codRol
+        })
+        console.log(this.state.cod_rol)
+    }
+
     onSubmit = async (e) => {
         e.preventDefault();
         const datosLogin = {
@@ -18,7 +26,11 @@ export default class Login extends Component {
             password: this.state.password
         };
         const res = await axios.post('/auth/signin', datosLogin);
-        res.data.Resultado === true ? this.setState({ cod_rol: res.data.Usuario.cod_rol }) : this.setState({ resultado: res.data.resultado });
+        res.data.Resultado === true ? this.setState({ 
+            cod_rol: res.data.Usuario.cod_rol 
+        }) : this.setState({ 
+            resultado: res.data.resultado 
+        });
     }
 
     onInputChange = (e) => {
@@ -30,35 +42,65 @@ export default class Login extends Component {
     render() {
         switch(this.state.cod_rol) {
             case "adm":
-                return <Redirect to={{ pathname: '/users/adm'}} />;
+                return <Redirect to={{ 
+                            pathname: '/users/adm'
+                        }} />;
             case "sup":
-                return <Redirect to={{ pathname: '/users/sup'}} />;
+                return <Redirect to={{ 
+                            pathname: '/users/sup'
+                        }} />;
             case "usr":
-                return <Redirect to={{ pathname: '/users/usr'}} />;
+                return <Redirect to={{ 
+                            pathname: '/users/usr'
+                        }} />;
             default:
                 break;
         };
-        return (
-            <div className="col-md-6 offset-md-3">
-                <div className="card card-body">
-                    <h4>Inicio de sesión</h4>
-                    <br/>
-                    <h5>Rut</h5>
-                    <div className="form-group">
-                        <input type="Tel" className="form-control" placeholder="Ej: 123456789" name="rut" onChange={this.onInputChange} required/>
+        return <div 
+                    className="col-md-6 offset-md-3"
+                >
+                    <div 
+                        className="card card-body"
+                    >
+                        <form 
+                            onSubmit={this.onSubmit}
+                        >
+                            <h4>Inicio de sesión</h4>
+                            <br/>
+                            <h5>Rut</h5>
+                            <div 
+                                className="form-group"
+                            >
+                                <input 
+                                    type="Tel" 
+                                    className="form-control" 
+                                    placeholder="Ej: 123456789" 
+                                    name="rut" 
+                                    onChange={this.onInputChange} 
+                                    required
+                                />
+                            </div>
+                            <h5>Password</h5>
+                            <div 
+                                className="form-group"
+                            >
+                                <input 
+                                    type="password" 
+                                    className="form-control" 
+                                    placeholder="********" name="password" 
+                                    onChange={this.onInputChange} 
+                                    required
+                                />
+                            </div>
+                            {!this.state.resultado && <p>El usuario o contraseña ingresada no existe</p> }
+                            <button 
+                                type="submit" 
+                                className="btn btn-primary"
+                            >
+                                Ingresar
+                            </button>
+                        </form>
                     </div>
-                    <h5>Password</h5>
-                    <div className="form-group">
-                        <input type="password" className="form-control" placeholder="********" name="password" onChange={this.onInputChange} required/>
-                    </div>
-                    {!this.state.resultado && <p>El usuario o contraseña ingresada no existe</p> }
-                    <form onSubmit={this.onSubmit}>
-                        <button type="submit" className="btn btn-primary">
-                            Ingresar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        )
+                </div>    
     }
 }
