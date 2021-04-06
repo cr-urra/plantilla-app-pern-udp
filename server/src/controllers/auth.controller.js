@@ -39,7 +39,7 @@ export const signUp = async (req, res) => {
         };
     } catch (e) {
         console.log(e);
-        res.status(500).json({message: "Problemas al registrar usuario, contactese con el administrador del sistema", data: {}})
+        res.json({message: "Problemas al registrar usuario, contactese con el administrador del sistema", data: {}})
     };
 };
 
