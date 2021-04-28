@@ -65,10 +65,10 @@ export const signIn = async (req, res) => {
             bool = true;
             res.json({Resultado: bool ,Usuario: result, token: user_token});
         }else{
-            res.json({resultado: bool ,message: "Password incorrecta"});
+            res.json({resultado: bool ,message: "Usuario o contraseña incorrectos"});
         };     
     }else{
-        res.json({resultado: bool ,message: "Usuario no encontrado"});
+        res.json({resultado: bool ,message: "Usuario o contraseña incorrectos"});
     };
 };
 
@@ -156,7 +156,7 @@ export const verifyUsr = async (req, res) => {
 export const logOut = async (req, res) => {
     const user_token = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
     res.cookie('token', user_token, {httpOnly: true});
-    res.json({resul: null, message: "Se ha cerrado la sesión"});
+    res.json({resultado: false, message: "Se ha cerrado la sesión"});
 };
 
 export const getRol = async (req, res) => {
