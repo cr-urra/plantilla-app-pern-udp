@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         rut: 0,
         password: "",
-        cod_rol: "",
+        cod_rol: "adm",
         resultado: true
     }
 
