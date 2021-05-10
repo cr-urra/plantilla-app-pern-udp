@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.4 (Ubuntu 12.4-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.4 (Ubuntu 12.4-0ubuntu0.20.04.1)
+-- Dumped from database version 11.11 (Debian 11.11-1.pgdg100+1)
+-- Dumped by pg_dump version 11.11 (Debian 11.11-1.pgdg100+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,7 +18,7 @@ SET row_security = off;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: roles; Type: TABLE; Schema: public; Owner: postgres
@@ -112,8 +112,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.roles (id, cod_rol, nombre) FROM stdin;
-1	con	conserje
 2	adm	administrador
+3	usr	residente
+1	sup	conserje
 \.
 
 
@@ -122,10 +123,9 @@ COPY public.roles (id, cod_rol, nombre) FROM stdin;
 --
 
 COPY public.users (id, rut, nombre, apellido, roles_id, password) FROM stdin;
-1	123456789	Juan	perez	1	pass123
-3	196443738	cristobal	urra	1	$2a$10$tP2BJpMacj0xhgXqeOuQxO5l4E/3ecbjbBdRQ59JhCutIoaCjRPHi
-4	196443739	cris	urrac	2	$2a$10$ykkVrlmALLNSaAJ8q9chBui5MqKjU.Uku3.TAc5860jvQUsS4Qh8W
-5	196443731	crisein	urracito	2	$2a$10$HjiNCT/65IZwVH.For4FT.w/hlT.mQFpdVgTsWmCYD0mCNzlrln96
+3	123456789	cristobal	Perez	1	$2a$10$tP2BJpMacj0xhgXqeOuQxO5l4E/3ecbjbBdRQ59JhCutIoaCjRPHi
+9	123456782	Cristian	Urorzo	3	$2a$10$WCb6ER7tspgzMWrjkmwr9ei/r8yW1WuEuk191vCf5BUZK721vl5aS
+4	123456781	Chris	Urrutia	2	$2a$10$ykkVrlmALLNSaAJ8q9chBui5MqKjU.Uku3.TAc5860jvQUsS4Qh8W
 \.
 
 
@@ -133,14 +133,14 @@ COPY public.users (id, rut, nombre, apellido, roles_id, password) FROM stdin;
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 2, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 3, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+SELECT pg_catalog.setval('public.users_id_seq', 9, true);
 
 
 --

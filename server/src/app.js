@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-require('./database/association');
+require('./database/associations');
 
 //inicialización
 
