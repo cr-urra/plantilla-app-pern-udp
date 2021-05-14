@@ -53,7 +53,7 @@ export const signIn = async (req, res) => {
         const matchPassword = await comparePassword(req.body.password, user.password);
         let user_token = null;
         if(matchPassword){
-            user_token = jwt.sign({id: user.id, antiCsrf: req.get('CSRF-Token')}, config.SECRET, {expiresIn: 120});
+            user_token = jwt.sign({id: user.id, antiCsrf: req.get('CSRF-Token')}, config.SECRET, {expiresIn: 1200000000});
             res.cookie('token', user_token, {httpOnly: true});
             const codRol = await consulRol(user.roles_id);
             const result = {

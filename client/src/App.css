@@ -27,6 +27,22 @@
     color: #ffffff !important;
 }
 
+.color_escritura{
+    color: #2d60b8 !important;
+}
+
+.head{
+    height: 73px !important;
+}
+
+.boton_sidebar{
+    padding: 20px 0 20px 23px !important;
+}
+
+.bienvenida{
+    margin: 10% 0;
+    padding-left: 8%
+}
 
 
 

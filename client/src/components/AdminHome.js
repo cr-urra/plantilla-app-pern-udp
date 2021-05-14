@@ -6,6 +6,7 @@ import Bienvenida from './Bienvenida.js'
 import {Redirect,Link} from 'react-router-dom';
 
 
+
 export default class AdminHome extends Component {
     state = {
         rut: 0,
@@ -47,23 +48,19 @@ export default class AdminHome extends Component {
         if(this.state.verify)
         return (
             
-            <div >
+
     
-                <div class="layout has-sidebar fixed-sidebar">
+                <div class="layout has-sidebar">
                   <aside >
                     <Sidebar/>
                     </aside>                 
                   <div class="layout">
                     <header class="header"><Navbar logOut={this.logOut}/></header>
                     <Bienvenida/>
-
-
                     <div class="overlay"></div>
-                  
                   </div>
                 </div>            
  
-            </div>
         )
         else 
         return <div/>

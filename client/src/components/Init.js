@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import Login from './Login'
+import Derechos from './footer'
+import logo from './logo.png'
 
 export default class Init extends Component {
     render() {
         return (
-            <div className="altura-login">
-                <div className="text-center">
-                    <p className="title text-black">Proyecto</p>
+            <div>
+                <br/>
+                <div class="text-center">
+                    <img src={logo} class="rounded " width="150" height="150" alt="logo"></img>     
                 </div>
+                <div className="text-center mt-4 mb-4">
+                    <h1 className="color_escritura">Sistema de Gestión de Importaciones</h1>
+                </div>
+                
                 <Login/>
-                <div id="copyright" className="text-center m-3 text-black">
-                    <h5>© Copyright 2021 | Todos los derechos reservados al desarrollo de este proyecto</h5>
-                </div>
+
+                <Derechos/>    
             </div>
         )
     }
