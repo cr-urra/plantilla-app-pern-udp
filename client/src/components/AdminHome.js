@@ -10,7 +10,7 @@ export default class AdminHome extends Component {
     state = {
         rut: 0,
         cod_rol: "",
-        verify: true,
+        verify: undefined,
         message: "",
     };
 
@@ -30,7 +30,7 @@ export default class AdminHome extends Component {
     logOut = async () => {
         const res = await axios.get("/auth/logout");
         this.setState({
-            verify: res.data.resul,
+            verify: res.data.logout,
             message: res.data.message
         });
     };
@@ -54,9 +54,9 @@ export default class AdminHome extends Component {
                     <Sidebar/>
                     </aside>                 
                   <div class="layout">
-                    <header class="header"><Navbar/></header>
+                    <header class="header"><Navbar logOut={this.logOut}/></header>
                     <Bienvenida/>
-                    <Bienvenida/>
+
 
                     <div class="overlay"></div>
                   
@@ -65,5 +65,7 @@ export default class AdminHome extends Component {
  
             </div>
         )
+        else 
+        return <div/>
     };
 }

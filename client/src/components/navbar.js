@@ -1,32 +1,46 @@
 import React, { Component } from 'react'
-import {Redirect,Link} from 'react-router-dom';
+import Logo from './logoNavbar.png';
 
 
 
 export default class Navbar extends Component {
+
+    state = {
+        UF: "29.985,25",
+        Dolar: "700,69",
+        UTM: "57.581,15"
+    }
+
+
     render() {
         return (
-            <header class="header">
+            <header className="header">
             
             <nav className="navbar navbar-expand-lg color_sitio navbar-dark">
-                
-                <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-                <span className="navbar-brand mb-0 h1">SGI</span>
-                </nav>
+                <img src={Logo} alt="logo" />
                     <div className="container">
-                        <Link className="navbar-brand" to="#">Hola, Administrador</Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon" />
-                        </button>
+                        <span className="navbar-brand" to="#">Hola, Administrador</span>                  
                         <div className="collapse navbar-collapse" id="navbarNav">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col">
+                                        <span className="navbar-brand"> UF: ${this.state.UF}</span> 
+                                    </div>
+                                    <div className="col">
+                                        <span className="navbar-brand"> Dolar: ${this.state.Dolar}</span> 
+                                    </div>
+                                    <div className="col">
+                                        <span className="navbar-brand">UTM: ${this.state.UTM}</span>
+                                    </div>
+                                </div>
                             <ul className="navbar-nav ml-auto">
-                                
                                 <li className="nav-item active">
-                                    <button type="button" className="btn warning" onClick={this.logOut}>
+                                    <button type="button" className="btn color_sitio2" onClick={this.props.logOut}>
                                         Cerrar sesión  
                                     </button>
                                 </li>
                             </ul>
+                            </div> 
                         </div>
                     </div>
                 </nav>

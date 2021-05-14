@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         rut: 0,
         password: "",
-        cod_rol: "adm",
+        cod_rol: "",
         resultado: ""
     }
 
@@ -21,13 +21,15 @@ export default class Login extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
+        const {data} = await axios.get("/csrf");
+        axios.defaults.headers.post['X-CSRF-Token'] = data.csrfToken;
         const datosLogin = {
             rut: this.state.rut,
             password: this.state.password
         };
         const res = await axios.post('/auth/signin', datosLogin);
-        res.data.Resultado === true ? this.setState({ 
-            cod_rol: res.data.Usuario.cod_rol 
+        res.data.resultado === true ? this.setState({ 
+            cod_rol: res.data.usuario.cod_rol 
         }) : this.setState({ 
             resultado: res.data.resultado 
         });
