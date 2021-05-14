@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './navbar.js'
-import Sidebar from './sidebar.js'
+import Navbar from './layout/navbarAdmin.js'
+import Sidebar from './layout/sidebarAdmin.js'
 import Bienvenida from './Bienvenida.js'
 import {Redirect,Link} from 'react-router-dom';
 

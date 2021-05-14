@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Login from './Login'
 import Derechos from './footer'
-import logo from './logo.png'
+import logo from '../imagenes/logo.png'
 
 export default class Init extends Component {
     render() {
