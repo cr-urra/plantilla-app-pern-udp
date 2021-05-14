@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './navbar.js'
+import Sidebar from './sidebar.js'
+import Bienvenida from './Bienvenida.js'
 import {Redirect,Link} from 'react-router-dom';
+
 
 export default class AdminHome extends Component {
     state = {
@@ -43,23 +46,24 @@ export default class AdminHome extends Component {
         };
         if(this.state.verify)
         return (
-            <div>
-                <Navbar/>
-                <div>
-                <div className="jumbotron jumbotron-fluid">
-                    <div className="container">
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>  
-                        <h1 className="display-4">BIENVENIDO A SGI</h1>
-                        <br/>
-                        <p className="lead">Sistema de Gestión para Importaciones</p>
-                    </div>
-                    </div>
-                </div>
-            </div>  
+            
+            <div >
+    
+                <div class="layout has-sidebar fixed-sidebar">
+                  <aside >
+                    <Sidebar/>
+                    </aside>                 
+                  <div class="layout">
+                    <header class="header"><Navbar/></header>
+                    <Bienvenida/>
+                    <Bienvenida/>
 
+                    <div class="overlay"></div>
+                  
+                  </div>
+                </div>            
+ 
+            </div>
         )
     };
 }

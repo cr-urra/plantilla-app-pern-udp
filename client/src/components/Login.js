@@ -8,7 +8,7 @@ export default class Login extends Component {
         rut: 0,
         password: "",
         cod_rol: "adm",
-        resultado: true
+        resultado: ""
     }
 
     componentDidMount = async () => {
