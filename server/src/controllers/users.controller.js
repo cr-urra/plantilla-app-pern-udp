@@ -18,7 +18,7 @@ export const updateUsers = async (req, res) => {
     });
     res.json({
         message: 'Usuario actualizado',
-        userUpdate
+        resultado: true
     });
 };
 

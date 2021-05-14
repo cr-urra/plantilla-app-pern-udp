@@ -113,8 +113,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 COPY public.roles (id, cod_rol, nombre) FROM stdin;
 2	adm	administrador
-3	usr	residente
-1	sup	conserje
+3	usr	usuario
+1	sup	superusuario
 \.
 
 

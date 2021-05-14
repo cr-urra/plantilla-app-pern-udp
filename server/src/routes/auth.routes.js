@@ -15,5 +15,4 @@ router.get('/getRol', getRol);
 router.post('/signup', verifySignUp.verifyUser, signUp);
 router.get('/logout', logOut);
 
-
 module.exports = router;

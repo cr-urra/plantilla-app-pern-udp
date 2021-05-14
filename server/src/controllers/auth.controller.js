@@ -45,7 +45,6 @@ export const signUp = async (req, res) => {
 
 export const signIn = async (req, res) => {
     const {rut} = req.body;
-    let bool = false;
     const user = await usuarios.findOne({
         where: {rut},
         attributes: ['id', 'rut', 'nombre', 'apellido', 'roles_id', 'password']
@@ -54,7 +53,7 @@ export const signIn = async (req, res) => {
         const matchPassword = await comparePassword(req.body.password, user.password);
         let user_token = null;
         if(matchPassword){
-            user_token = jwt.sign({id: user.id}, config.SECRET, {expiresIn: 120});
+            user_token = jwt.sign({id: user.id, antiCsrf: req.get('CSRF-Token')}, config.SECRET, {expiresIn: 120});
             res.cookie('token', user_token, {httpOnly: true});
             const codRol = await consulRol(user.roles_id);
             const result = {
@@ -62,13 +61,12 @@ export const signIn = async (req, res) => {
                 apellido: user.apellido,
                 cod_rol: codRol.cod_rol
             };
-            bool = true;
-            res.json({Resultado: bool ,Usuario: result, token: user_token});
+            res.json({resultado: true ,usuario: result});
         }else{
-            res.json({resultado: bool ,message: "Usuario o contraseña incorrectos"});
+            res.json({resultado: false ,message: "Usuario o contraseña incorrectos"});
         };     
     }else{
-        res.json({resultado: bool ,message: "Usuario o contraseña incorrectos"});
+        res.json({resultado: false ,message: "Usuario o contraseña incorrectos"});
     };
 };
 
@@ -156,14 +154,15 @@ export const verifyUsr = async (req, res) => {
 export const logOut = async (req, res) => {
     const user_token = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
     res.cookie('token', user_token, {httpOnly: true});
-    res.json({resultado: false, message: "Se ha cerrado la sesión"});
+    res.json({resultado: true, message: "Se ha cerrado la sesión", logout: null});
 };
 
 export const getRol = async (req, res) => {
     const token = req.cookies.token;
     !token && res.json({resultado: false, cod_rol: "", message: ""});
     let verifyDecoded = null;
-    const aux = jwt.verify(token, config.SECRET, (err) => {verifyDecoded = err});
+    jwt.verify(token, config.SECRET, (err) => {verifyDecoded = err});
+    console.log(verifyDecoded);
     if(verifyDecoded !== null){
         res.json({resultado: false, cod_rol: "", message: ""});
     }else{
